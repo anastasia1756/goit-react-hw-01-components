@@ -1,15 +1,19 @@
 import { Stats } from './Stats';
-import data from '../../data.json';
+import data from '../json/data.json';
 import PropTypes from 'prop-types';
+import { Statistic, Title, List } from './Statistic.styled';
 
-export const Statistics = props => {
+export const Statistics = () => {
   return (
-    <section className="statistics">
-      <h2 className="title">Upload stats</h2>
-      {data.map(data => (
-        <Stats key={data.id} data={data} />
-      ))}
-    </section>
+    <Statistic>
+      {Title && <Title>Upload stats</Title>}
+
+      <List>
+        {data.map(data => (
+          <Stats key={data.id} data={data} />
+        ))}
+      </List>
+    </Statistic>
   );
 };
 

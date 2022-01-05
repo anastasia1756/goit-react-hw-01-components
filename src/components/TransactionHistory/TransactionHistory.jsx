@@ -1,25 +1,35 @@
-export const TransactionHistory = ({
-  items: { id, type, amount, currency },
-}) => {
+import transactions from '../json/transactions.json';
+import PropTypes from 'prop-types';
+import { Container, Table, Head, Data, List } from './Transaction.styled';
+
+export const TransactionHistory = () => {
   return (
-    <>
-      <table className="transaction-history">
+    <Container>
+      <Table>
         <thead>
           <tr>
-            <th>Type</th>
-            <th>Amount</th>
-            <th>Currency</th>
+            <Head>Type</Head>
+            <Head>Amount</Head>
+            <Head>Currency</Head>
           </tr>
         </thead>
         <tbody>
-          <tr key={id}>
-            <td>{type}</td>
-            <td>{amount}</td>
-            <td>{currency}</td>
-          </tr>
+          {transactions.map(({ id, type, amount, currency }) => (
+            <List key={id}>
+              <Data>{type}</Data>
+              <Data>{amount}</Data>
+              <Data>{currency}</Data>
+            </List>
+          ))}
         </tbody>
-      </table>
-    </>
+      </Table>
+    </Container>
   );
 };
-//надо map
+
+TransactionHistory.propTypes = {
+  id: PropTypes.string,
+  type: PropTypes.string,
+  amount: PropTypes.string,
+  currency: PropTypes.string,
+};
