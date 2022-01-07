@@ -1,15 +1,14 @@
 import { Stats } from './Stats';
-import data from '../json/data.json';
 import PropTypes from 'prop-types';
 import { Statistic, Title, List } from './Statistic.styled';
 
-export const Statistics = () => {
+export const Statistics = ({ stats }) => {
   return (
     <Statistic>
       {Title && <Title>Upload stats</Title>}
 
       <List>
-        {data.map(data => (
+        {stats.map(data => (
           <Stats key={data.id} data={data} />
         ))}
       </List>
@@ -18,5 +17,9 @@ export const Statistics = () => {
 };
 
 Statistics.propTypes = {
-  children: PropTypes.string,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };

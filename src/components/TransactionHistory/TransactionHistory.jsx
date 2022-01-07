@@ -1,8 +1,7 @@
-import transactions from '../json/transactions.json';
 import PropTypes from 'prop-types';
 import { Container, Table, Head, Data, List } from './Transaction.styled';
 
-export const TransactionHistory = () => {
+export const TransactionHistory = ({ items }) => {
   return (
     <Container>
       <Table>
@@ -14,7 +13,7 @@ export const TransactionHistory = () => {
           </tr>
         </thead>
         <tbody>
-          {transactions.map(({ id, type, amount, currency }) => (
+          {items.map(({ id, type, amount, currency }) => (
             <List key={id}>
               <Data>{type}</Data>
               <Data>{amount}</Data>
@@ -28,8 +27,12 @@ export const TransactionHistory = () => {
 };
 
 TransactionHistory.propTypes = {
-  id: PropTypes.string,
-  type: PropTypes.string,
-  amount: PropTypes.string,
-  currency: PropTypes.string,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.string.isRequired,
+      currency: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };

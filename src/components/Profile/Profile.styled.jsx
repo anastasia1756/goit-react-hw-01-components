@@ -5,6 +5,7 @@ export const Container = styled.div`
   margin: 0 auto;
   border: 2px solid rgba(167, 165, 164, 0.5);
   box-shadow: plum;
+  background-color: antiquewhite;
 `;
 
 export const Desc = styled.div`
@@ -27,14 +28,21 @@ export const Stats = styled.ul`
   display: flex;
   justify-content: space-around;
   list-style: none;
-  margin-left: 0;
-  padding-left: 0;
+  margin: 0;
+  padding: 0;
 
   border-top: 2px solid rgba(167, 165, 164, 0.5);
-  padding-top: 10px;
+  /* padding-top: 10px; */
 `;
 
 export const List = styled.li`
   display: flex;
   flex-direction: column;
+  padding: 25px;
+  width: calc(100% / 3);
+  text-align: center;
+
+  &:not(:last-child) {
+    border-right: 1px solid rgba(167, 165, 164, 0.5);
+  }
 `;
